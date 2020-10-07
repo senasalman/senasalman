@@ -3,22 +3,22 @@
     "path": "~/Desktop/R/senasalman/config.toml",
     "project_path": "config.toml",
     "type": "toml",
-    "hash": "2594405294",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1602110407343.0,
     "source_on_save": false,
     "relative_order": 2,
     "properties": {
-        "cursorPosition": "221,0",
-        "scrollLine": "202"
+        "cursorPosition": "95,7",
+        "scrollLine": "92"
     },
     "folds": "",
-    "lastKnownWriteTime": 1602110669,
+    "lastKnownWriteTime": 1602111249,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1602110669705,
+    "last_content_update": 1602111249986,
     "read_only": false,
     "read_only_alternatives": []
 }
