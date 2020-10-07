@@ -3,9 +3,9 @@
     "path": "~/Desktop/R/senasalman/netlify.toml",
     "project_path": "netlify.toml",
     "type": "toml",
-    "hash": "0",
+    "hash": "3500269460",
     "contents": "",
-    "dirty": true,
+    "dirty": false,
     "created": 1602110447837.0,
     "source_on_save": false,
     "relative_order": 3,
@@ -14,11 +14,11 @@
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1602110398,
+    "lastKnownWriteTime": 1602110672,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1602110454596,
+    "last_content_update": 1602110672412,
     "read_only": false,
     "read_only_alternatives": []
 }
