@@ -1,11 +1,11 @@
 # Site settings
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "Forty"
+title = "Portfolio website for Sena Salman"
 theme = "forty"
 
 # Enter your tracking code to enable Google Analytics
-googleAnalytics = ""
+googleAnalytics = "" 
 
 # Enter your disqus shortname to enable comments
 disqusShortname = ""
@@ -19,8 +19,8 @@ disqusShortname = ""
   # CSS class.
 
   # Provide your metadata here.
-  name = "Your name"
-  description = "Your description"
+  name = "Sena Salman"
+  description = "MFA student at London Business School"
 
   # Link custom assets relative to /static
   custom_css = []
@@ -37,26 +37,26 @@ disqusShortname = ""
 
   # Navigation Section
   [params.navigation]
-    title = "Forty"
-    subtitle = "By HTML5 Up"
+    title = "Portfolio and Works"
+    #subtitle = ""
     menu = "Menu"
     # Optional logo as brand stored in img/
     # logo = "logo.png"
 
     [[params.navigation.links]]
-      name = "Home"
+      name = "About me"
       url = "#"
 
     [[params.navigation.links]]
-      name = "Blogs"
+      name = "Work on Covid Cases"
       url = "blogs"
 
     [[params.navigation.links]]
-      name = "Generic Blog"
+      name = "Work on US Elections"
       url = "blogs/ipsum"
 
     [[params.navigation.links]]
-      name = "Elements"
+      name = "Work on Markets"
       url = "elements.html"
 
     # Add custom links here by uncommenting code below. To remove links just delete
@@ -73,7 +73,7 @@ disqusShortname = ""
 
     # Button Style 2
     [[params.navigation.button2]]
-      name = "Log In"
+      name = "Queries"
       url = "#"
 
 
@@ -81,9 +81,9 @@ disqusShortname = ""
   [params.banner]
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
-    title = "Hi, my name is Forty"
-    subtitle = "A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP\nAND RELEASED UNDER THE CREATIVE COMMONS."
-    buttonText = "Get Started"
+    title = "Personal Portfolio of Sena Salman"
+    #subtitle = ""
+    buttonText = "About me"
 
 
   # Tiles Section
@@ -172,17 +172,17 @@ disqusShortname = ""
     # by copying the corresponding map with frontmatter code.
     [[params.contact.email]]
     title = "Email"
-    email = "example@domain.com"
+    email = "ssalman.mfa2021@london.edu"
 
-    [[params.contact.phone]]
-    title = "Phone"
-    phone = "(000) 000-0000 x1234"
+    #[[params.contact.phone]]
+    #title = "Phone"
+    #phone = "(000) 000-0000 x1234"
 
     [[params.contact.address]]
     title = "Address"
-    street = "Street"
-    city = "City, ST 00000"
-    country = "Country"
+    street = "Sussex Place, Regents Park"
+    city = "London, NW1 4SA"
+    country = "United Kingdom"
 
   # Footer section
   [params.footer]
@@ -190,32 +190,32 @@ disqusShortname = ""
     copyright = "Company Name"
 
     # Uses font awesome icons
-    [[params.footer.social]]
-      icon = "fa-twitter"
-      url= "https://www.twitter.com"
-      label = "Twitter"
+   # [[params.footer.social]]
+    #  icon = "fa-twitter"
+    #  url= "https://www.twitter.com"
+    #  label = "Twitter"
 
     [[params.footer.social]]
-      icon = "fa-facebook"
-      url= "https://www.facebook.com"
-      label = "Facebook"
+    #  icon = "fa-facebook"
+    #  url= "https://www.facebook.com"
+    #  label = "Facebook"
 
     [[params.footer.social]]
-      icon = "fa-instagram"
-      url= "https://www.instagram.com"
-      label = "Instagram"
+    #  icon = "fa-instagram"
+    #  url= "https://www.instagram.com"
+    #  label = "Instagram"
     
     [[params.footer.social]]
       icon = "fa-github"
-      url= "https://www.github.com"
+      url= "https://github.com/senasalman"
       label = "GitHub"
 
     [[params.footer.social]]
       icon = "fa-linkedin"
-      url= "https://www.linkedin.com"
+      url= "https://www.linkedin.com/senasalman"
       label = "LinkedIn"
 
     [[params.footer.quicklinks]]
-      text = "Design: "
-      url= "https://www.html5up.net"
-      alt = "HTML5 UP"
+    #  text = "Design: "
+    #  url= "https://www.html5up.net"
+    #  alt = "HTML5 UP"
