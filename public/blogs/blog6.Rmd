@@ -97,10 +97,6 @@ Trump_plot
 
 We facet by year, and add an orange line at zero.
 
-```{r trump_margins, echo=FALSE, out.width="100%"}
-knitr::include_graphics(here::here("images", "trump_approval_margin.png"), error = FALSE)
-```
-
 ## Compare Confidence Intervals for week 15 and week 34 in 2020
 
 We compare the confidence intervals for 'week 15' (6-12 April 2020) and 'week 34' (17-23 August 2020).
