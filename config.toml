@@ -88,7 +88,7 @@ disqusShortname = ""
     # the 'static/img' folder.
     title = "Personal Portfolio of Sena Salman"
     subtitle = "Welcome to my website. I am currently studying Masters in Financial Analysis at LBS"
-    buttonText = "My Projects for Data Analytics"
+    buttonText = "My Projects"
 
 
   # Tiles Section
@@ -182,7 +182,7 @@ disqusShortname = ""
     # - send a dummy email yourself to confirm your account
     # - click the confirm link in the email from www.formspree.io
     # - you're done. Happy mailing!
-    # formEmail = "example@domain.com"
+    formEmail = "ssalman.mfa2021@london.edu"
 
     # Contact Section
     # You can add multiple emails, phone numbers, or addresses
@@ -191,9 +191,9 @@ disqusShortname = ""
     title = "Email"
     email = "ssalman.mfa2021@london.edu"
 
-    # [[params.contact.phone]]
-    # title = "Phone"
-    # phone = "(000) 000-0000 x1234"
+     [[params.contact.phone]]
+     title = "Phone"
+     phone = "(0044) 020-7000 7000"
 
     [[params.contact.address]]
     title = "Address"
@@ -212,12 +212,12 @@ disqusShortname = ""
     #  url= "https://www.twitter.com"
     #  label = "Twitter"
 
-    [[params.footer.social]]
+    #[[params.footer.social]]
     #  icon = "fa-facebook"
     #  url= "https://www.facebook.com"
     #  label = "Facebook"
 
-    [[params.footer.social]]
+   # [[params.footer.social]]
     #  icon = "fa-instagram"
     #  url= "https://www.instagram.com"
     #  label = "Instagram"
@@ -232,7 +232,7 @@ disqusShortname = ""
       url= "https://www.linkedin.com/senasalman"
       label = "LinkedIn"
 
-    [[params.footer.quicklinks]]
+   # [[params.footer.quicklinks]]
     #  text = "Design: "
     #  url= "https://www.html5up.net"
     #  alt = "HTML5 UP"
