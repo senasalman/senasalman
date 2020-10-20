@@ -106,11 +106,8 @@ bike &lt;- bike0 %&gt;%
           month = lubridate::month(day, label = TRUE),
           week = isoweek(day))</code></pre>
 <p>We can easily create a facet grid that plots bikes hired by month and year.</p>
-<p><img src="/Users/Sena/Desktop/R/senasalman/images/tfl_distributions_monthly.png" width="100%" style="display: block; margin: auto;" />
-For May and Jun 2020 we see that the curves are more flat compared to the previous years. This can be explained by Covid. Also it shows that bike rentals in May and June 2020 are distributed evenly between 20k and 60k, while in the previous years you always have a peak that shows that in the previous years we had for each month a certain number for daily rentals that didn’t differ that much by day.</p>
-<p><img src="/Users/Sena/Desktop/R/senasalman/images/tfl_monthly.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>For May and Jun 2020 we observe that the curves are more flat compared to the previous years. This can be explained by Covid. Also it shows that bike rentals in May and June 2020 are distributed evenly between 20k and 60k, while in the previous years you always have a peak that shows that in the previous years we had for each month a certain number for daily rentals that didn’t differ that much by day.</p>
 <p>The second one looks at percentage changes from the expected level of weekly rentals. The two grey shaded rectangles correspond to the second (weeks 14-26) and fourth (weeks 40-52) quarters.</p>
-<p><img src="/Users/Sena/Desktop/R/senasalman/images/tfl_weekly.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Plot the first Graph, where the blue line is the expected number of rentals in that month, and the black line is actual number of rentals. The difference is shaded red, if number of excess rentals is smaller than 0, and green otherwise.</p>
 <pre class="r"><code>bikes_monthly$month &lt;- as.factor(bikes_monthly$month)
 ggplot(data=bikes_monthly, aes(x=month , y=expected_rentals, group=1)) + facet_wrap(~year) + 

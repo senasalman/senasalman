@@ -1,0 +1,114 @@
+---
+title: "Trump's Approval Margins"
+date: '2020-10-20'
+description: Trump's Approval Margins
+draft: no
+image: pic10.jpg
+keywords: ''
+slug: blog6
+categories:
+- ''
+- ''
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(here)
+library(skimr)
+library(janitor)
+library(httr)
+library(readxl)
+library(vroom)
+```
+
+# Trump's Approval Margins
+
+## How has it changed in years
+
+```{r, cache=TRUE}
+# Import approval polls data
+approval_polllist <- read_csv(here::here('data', 'approval_polllist.csv'))
+# or directly off fivethirtyeight website
+# approval_polllist <- read_csv('https://projects.fivethirtyeight.com/trump-approval-data/approval_polllist.csv') 
+glimpse(approval_polllist)
+# Use `lubridate` to fix dates, as they are given as characters.
+```
+
+## Create a plot
+
+We calculate the average net approval rate (approve- disapprove) for each week since he got into office. We plot the net approval, along with its 95% confidence interval.
+
+```{r Trump_approval_margin}
+approval_polllist <- approval_polllist %>% 
+  mutate(net_approval = approve - disapprove,
+         date = mdy(enddate),
+         year = year(date),
+         week = week(date))
+Trump_approval_margin <- approval_polllist %>% 
+  group_by(year, week) %>% 
+  summarise(mean_net_approval = mean(net_approval),
+            sd_net_approval = sd(net_approval),
+            count = n(),
+            t_critical = qt(0.975, count-1),
+            se_net_approval = sd_net_approval/sqrt(count),
+            low_net_approval = mean_net_approval - t_critical*se_net_approval,
+            high_net_approval = mean_net_approval + t_critical*se_net_approval)
+```
+
+```{r picture_Trump_approval_margin, fig.height=10, fig.width=20}
+Trump_plot <- Trump_approval_margin %>% 
+  ggplot(aes(x = week, y = mean_net_approval, color = as.factor(year))) +
+  geom_ribbon(aes(ymin = low_net_approval, ymax = high_net_approval, fill = as.factor(year))) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~year) +
+  scale_color_manual(values = c("#FF0000", "#32CD32", "#236B81", "#9932CD", "organge")) +
+  scale_fill_manual(values = alpha(c("#FF0000", "#32CD32", "#236B81", "#9932CD"), 0.1)) +
+  scale_x_continuous(breaks = c(0, 13, 26, 39, 52)) +
+  scale_y_continuous(breaks = seq(-20, 7.5, by = 2.5)) +
+  coord_fixed(ratio = 1/1.5) +
+  geom_hline(aes(yintercept=0), color = "orange") +
+  labs(title = "The average approval for Trump started to get volatile again recently", 
+       subtitle = "Estimating Net Approval (approve-disapprove) for Donald Trump (Weekly average of all polls)",
+       x = "Week of the year",
+       y = "Average Net Approval (%)") +
+  theme(legend.position = "none") +
+  theme_bw()
+Trump_plot
+```
+
+We facet by year, and add an orange line at zero.
+
+```{r trump_margins, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("images", "trump_approval_margin.png"), error = FALSE)
+```
+
+## Compare Confidence Intervals for week 15 and week 34 in 2020
+
+We compare the confidence intervals for 'week 15' (6-12 April 2020) and 'week 34' (17-23 August 2020).
+
+```{r}
+Trump_approval_margin %>% 
+  filter(week %in% c(15, 34), year == 2020) %>% 
+  select(c(year, week, low_net_approval, high_net_approval))
+```
+
+Based on the results above, in week 34 confidence interval is longer due to a higher standard error which can be due to t-critical value or standard deviation. In both, week 15 and week 34 t-critical values are approximately the same, therefore standard distribution in week 34 is higher indicating poor results. It is then difficult to predict true mean. The reason of this fall might be Trump's attitude during the beginning of the Coronavirus outbreak.

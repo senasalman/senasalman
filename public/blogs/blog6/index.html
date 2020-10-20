@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="MFA student at London Business School">
+	<meta name="author" content="Sena Salman">
+	<meta name="generator" content="Hugo 0.76.2" />
+	<title>Trump&#39;s Approval Margins &middot; Portfolio website for Sena Salman</title>
+	<!-- Stylesheets -->
+	
+	<link rel="stylesheet" href="/css/main.css"/>
+	
+	
+
+	
+
+	<!-- Custom Fonts -->
+	<link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="js/ie/html5shiv.js"></script>
+	<script src="js/ie/html5shiv.jsrespond.min.js"></script>
+	<![endif]-->
+</head>
+
+    <body>
+
+    <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+    <header id="header" class="alt">
+        <a href="/" class="logo"><strong>Sena Salman</strong> <span></span></a>
+        <nav>
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
+
+<!-- Menu -->
+    <nav id="menu">
+        <ul class="links">
+            
+                <li><a href="/">Home</a></li>
+            
+                <li><a href="/blogs">Blogs</a></li>
+            
+
+        </ul>
+        <ul class="actions vertical">
+            
+                <li><a href="/blogs/Sena_Salman_CV.pdf" class="button special fit">CV</a></li>
+            
+                <li><a href="/blogs" class="button special fit">My projects</a></li>
+            
+            
+        </ul>
+    </nav>
+
+        <!-- Main -->
+            <div id="main" class="alt">
+
+                
+                    <section id="one">
+                        <div class="inner">
+                            <header class="major">
+                                <h1>Trump&#39;s Approval Margins</h1>
+                            </header>
+                            
+                                <span class="image main"><img src="/img/blogs/pic10.jpg" alt="" /></span>
+                            
+                            
+
+
+<div id="trumps-approval-margins" class="section level1">
+<h1>Trump’s Approval Margins</h1>
+<div id="how-has-it-changed-in-years" class="section level2">
+<h2>How has it changed in years</h2>
+<pre class="r"><code># Import approval polls data
+approval_polllist &lt;- read_csv(here::here(&#39;data&#39;, &#39;approval_polllist.csv&#39;))
+# or directly off fivethirtyeight website
+# approval_polllist &lt;- read_csv(&#39;https://projects.fivethirtyeight.com/trump-approval-data/approval_polllist.csv&#39;) 
+glimpse(approval_polllist)</code></pre>
+<pre><code>## Rows: 14,533
+## Columns: 22
+## $ president           &lt;chr&gt; &quot;Donald Trump&quot;, &quot;Donald Trump&quot;, &quot;Donald Trump&quot;, &quot;…
+## $ subgroup            &lt;chr&gt; &quot;All polls&quot;, &quot;All polls&quot;, &quot;All polls&quot;, &quot;All polls…
+## $ modeldate           &lt;chr&gt; &quot;8/29/2020&quot;, &quot;8/29/2020&quot;, &quot;8/29/2020&quot;, &quot;8/29/2020…
+## $ startdate           &lt;chr&gt; &quot;1/20/2017&quot;, &quot;1/20/2017&quot;, &quot;1/20/2017&quot;, &quot;1/21/2017…
+## $ enddate             &lt;chr&gt; &quot;1/22/2017&quot;, &quot;1/22/2017&quot;, &quot;1/24/2017&quot;, &quot;1/23/2017…
+## $ pollster            &lt;chr&gt; &quot;Gallup&quot;, &quot;Morning Consult&quot;, &quot;Ipsos&quot;, &quot;Gallup&quot;, &quot;…
+## $ grade               &lt;chr&gt; &quot;B&quot;, &quot;B/C&quot;, &quot;B-&quot;, &quot;B&quot;, &quot;B&quot;, &quot;C+&quot;, &quot;B-&quot;, &quot;B+&quot;, &quot;B&quot;…
+## $ samplesize          &lt;dbl&gt; 1500, 1992, 1632, 1500, 1500, 1500, 1651, 1190, 2…
+## $ population          &lt;chr&gt; &quot;a&quot;, &quot;rv&quot;, &quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;lv&quot;, &quot;a&quot;, &quot;rv&quot;, &quot;a&quot;, &quot;…
+## $ weight              &lt;dbl&gt; 0.262, 0.680, 0.153, 0.243, 0.227, 0.200, 0.142, …
+## $ influence           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ approve             &lt;dbl&gt; 45.0, 46.0, 42.1, 45.0, 46.0, 57.0, 42.3, 36.0, 4…
+## $ disapprove          &lt;dbl&gt; 45.0, 37.0, 45.2, 46.0, 45.0, 43.0, 45.8, 44.0, 3…
+## $ adjusted_approve    &lt;dbl&gt; 45.8, 45.3, 43.2, 45.8, 46.8, 51.6, 43.4, 37.7, 4…
+## $ adjusted_disapprove &lt;dbl&gt; 43.6, 37.8, 43.9, 44.6, 43.6, 44.4, 44.5, 42.8, 3…
+## $ multiversions       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ tracking            &lt;lgl&gt; TRUE, NA, TRUE, TRUE, TRUE, TRUE, TRUE, NA, NA, T…
+## $ url                 &lt;chr&gt; &quot;http://www.gallup.com/poll/201617/gallup-daily-t…
+## $ poll_id             &lt;dbl&gt; 49253, 49249, 49426, 49262, 49236, 49266, 49425, …
+## $ question_id         &lt;dbl&gt; 77265, 77261, 77599, 77274, 77248, 77278, 77598, …
+## $ createddate         &lt;chr&gt; &quot;1/23/2017&quot;, &quot;1/23/2017&quot;, &quot;3/1/2017&quot;, &quot;1/24/2017&quot;…
+## $ timestamp           &lt;chr&gt; &quot;13:38:37 29 Aug 2020&quot;, &quot;13:38:37 29 Aug 2020&quot;, &quot;…</code></pre>
+<pre class="r"><code># Use `lubridate` to fix dates, as they are given as characters.</code></pre>
+</div>
+<div id="create-a-plot" class="section level2">
+<h2>Create a plot</h2>
+<p>We calculate the average net approval rate (approve- disapprove) for each week since he got into office. We plot the net approval, along with its 95% confidence interval.</p>
+<pre class="r"><code>approval_polllist &lt;- approval_polllist %&gt;% 
+  mutate(net_approval = approve - disapprove,
+         date = mdy(enddate),
+         year = year(date),
+         week = week(date))
+Trump_approval_margin &lt;- approval_polllist %&gt;% 
+  group_by(year, week) %&gt;% 
+  summarise(mean_net_approval = mean(net_approval),
+            sd_net_approval = sd(net_approval),
+            count = n(),
+            t_critical = qt(0.975, count-1),
+            se_net_approval = sd_net_approval/sqrt(count),
+            low_net_approval = mean_net_approval - t_critical*se_net_approval,
+            high_net_approval = mean_net_approval + t_critical*se_net_approval)</code></pre>
+<pre class="r"><code>Trump_plot &lt;- Trump_approval_margin %&gt;% 
+  ggplot(aes(x = week, y = mean_net_approval, color = as.factor(year))) +
+  geom_ribbon(aes(ymin = low_net_approval, ymax = high_net_approval, fill = as.factor(year))) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~year) +
+  scale_color_manual(values = c(&quot;#FF0000&quot;, &quot;#32CD32&quot;, &quot;#236B81&quot;, &quot;#9932CD&quot;, &quot;organge&quot;)) +
+  scale_fill_manual(values = alpha(c(&quot;#FF0000&quot;, &quot;#32CD32&quot;, &quot;#236B81&quot;, &quot;#9932CD&quot;), 0.1)) +
+  scale_x_continuous(breaks = c(0, 13, 26, 39, 52)) +
+  scale_y_continuous(breaks = seq(-20, 7.5, by = 2.5)) +
+  coord_fixed(ratio = 1/1.5) +
+  geom_hline(aes(yintercept=0), color = &quot;orange&quot;) +
+  labs(title = &quot;The average approval for Trump started to get volatile again recently&quot;, 
+       subtitle = &quot;Estimating Net Approval (approve-disapprove) for Donald Trump (Weekly average of all polls)&quot;,
+       x = &quot;Week of the year&quot;,
+       y = &quot;Average Net Approval (%)&quot;) +
+  theme(legend.position = &quot;none&quot;) +
+  theme_bw()
+Trump_plot</code></pre>
+<p><img src="/blogs/blog6_files/figure-html/picture_Trump_approval_margin-1.png" width="1920" style="display: block; margin: auto;" /></p>
+<p>We facet by year, and add an orange line at zero.</p>
+<p><img src="/Users/Sena/Desktop/R/senasalman/images/trump_approval_margin.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="compare-confidence-intervals-for-week-15-and-week-34-in-2020" class="section level2">
+<h2>Compare Confidence Intervals for week 15 and week 34 in 2020</h2>
+<p>We compare the confidence intervals for ‘week 15’ (6-12 April 2020) and ‘week 34’ (17-23 August 2020).</p>
+<pre class="r"><code>Trump_approval_margin %&gt;% 
+  filter(week %in% c(15, 34), year == 2020) %&gt;% 
+  select(c(year, week, low_net_approval, high_net_approval))</code></pre>
+<pre><code>## # A tibble: 2 x 4
+## # Groups:   year [1]
+##    year  week low_net_approval high_net_approval
+##   &lt;dbl&gt; &lt;dbl&gt;            &lt;dbl&gt;             &lt;dbl&gt;
+## 1  2020    15            -8.84             -7.36
+## 2  2020    34           -12.8              -8.98</code></pre>
+<p>Based on the results above, in week 34 confidence interval is longer due to a higher standard error which can be due to t-critical value or standard deviation. In both, week 15 and week 34 t-critical values are approximately the same, therefore standard distribution in week 34 is higher indicating poor results. It is then difficult to predict true mean. The reason of this fall might be Trump’s attitude during the beginning of the Coronavirus outbreak.</p>
+</div>
+</div>
+
+                        </div>
+                    </section>
+            <!-- Disqus Inject -->
+                
+            </div>
+            
+        <!-- Footer -->
+            
+        </div>
+
+    <!-- Scripts -->
+        <!-- Scripts -->
+    <!-- jQuery -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+
+    
+
+    <!-- Main JS -->
+    <script src="/js/main.js"></script>
+
+    
+
+    
+
+    </body>
+</html>

@@ -17,6 +17,25 @@
     </item>
     
     <item>
+      <title>An Emergency: Global Warming</title>
+      <link>/blogs/blog7/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/blog7/</guid>
+      <description>An Emergency: Global Warming Analysing Climate Change and Temperature Anomalies If we wanted to study climate change, we can find data on the Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies in the Northern Hemisphere at NASA’s Goddard Institute for Space Studies. The tabular data of temperature anomalies can be found here
+To define temperature anomalies you need to have a reference, or base, period which NASA clearly states that it is the period between 1951-1980.</description>
+    </item>
+    
+    <item>
+      <title>Trump&#39;s Approval Margins</title>
+      <link>/blogs/blog6/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/blog6/</guid>
+      <description>Trump’s Approval Margins How has it changed in years # Import approval polls data approval_polllist &amp;lt;- read_csv(here::here(&amp;#39;data&amp;#39;, &amp;#39;approval_polllist.csv&amp;#39;)) # or directly off fivethirtyeight website # approval_polllist &amp;lt;- read_csv(&amp;#39;https://projects.fivethirtyeight.com/trump-approval-data/approval_polllist.csv&amp;#39;) glimpse(approval_polllist) ## Rows: 14,533 ## Columns: 22 ## $ president &amp;lt;chr&amp;gt; &amp;quot;Donald Trump&amp;quot;, &amp;quot;Donald Trump&amp;quot;, &amp;quot;Donald Trump&amp;quot;, &amp;quot;… ## $ subgroup &amp;lt;chr&amp;gt; &amp;quot;All polls&amp;quot;, &amp;quot;All polls&amp;quot;, &amp;quot;All polls&amp;quot;, &amp;quot;All polls… ## $ modeldate &amp;lt;chr&amp;gt; &amp;quot;8/29/2020&amp;quot;, &amp;quot;8/29/2020&amp;quot;, &amp;quot;8/29/2020&amp;quot;, &amp;quot;8/29/2020… ## $ startdate &amp;lt;chr&amp;gt; &amp;quot;1/20/2017&amp;quot;, &amp;quot;1/20/2017&amp;quot;, &amp;quot;1/20/2017&amp;quot;, &amp;quot;1/21/2017… ## $ enddate &amp;lt;chr&amp;gt; &amp;quot;1/22/2017&amp;quot;, &amp;quot;1/22/2017&amp;quot;, &amp;quot;1/24/2017&amp;quot;, &amp;quot;1/23/2017… ## $ pollster &amp;lt;chr&amp;gt; &amp;quot;Gallup&amp;quot;, &amp;quot;Morning Consult&amp;quot;, &amp;quot;Ipsos&amp;quot;, &amp;quot;Gallup&amp;quot;, &amp;quot;… ## $ grade &amp;lt;chr&amp;gt; &amp;quot;B&amp;quot;, &amp;quot;B/C&amp;quot;, &amp;quot;B-&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;C+&amp;quot;, &amp;quot;B-&amp;quot;, &amp;quot;B+&amp;quot;, &amp;quot;B&amp;quot;… ## $ samplesize &amp;lt;dbl&amp;gt; 1500, 1992, 1632, 1500, 1500, 1500, 1651, 1190, 2… ## $ population &amp;lt;chr&amp;gt; &amp;quot;a&amp;quot;, &amp;quot;rv&amp;quot;, &amp;quot;a&amp;quot;, &amp;quot;a&amp;quot;, &amp;quot;a&amp;quot;, &amp;quot;lv&amp;quot;, &amp;quot;a&amp;quot;, &amp;quot;rv&amp;quot;, &amp;quot;a&amp;quot;, &amp;quot;… ## $ weight &amp;lt;dbl&amp;gt; 0.</description>
+    </item>
+    
+    <item>
       <title>Yield Curve Inversion Analysis</title>
       <link>/blogs/blog10/</link>
       <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
