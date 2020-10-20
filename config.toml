@@ -87,7 +87,7 @@ disqusShortname = ""
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
     title = "Personal Portfolio of Sena Salman"
-    subtitle = "Welcome to my website. I am currently studying Masters in Financial Analysis at LBS"
+    subtitle = "Welcome to my website. I am currently studying Masters in Financial Analysis at London Business School"
     buttonText = "My Projects"
     url = "blogs"
 
@@ -129,7 +129,7 @@ disqusShortname = ""
       
           [[params.tiles.showcase]]
       title = "Yield Curve Inversion Analysis"
-      subtitle = "Is really it an indicator of recession?"
+      subtitle = "Is it really an indicator of recession?"
       image = "pic10.jpg"
       url = "blogs/blog10"
 
