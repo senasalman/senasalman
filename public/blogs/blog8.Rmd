@@ -26,9 +26,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-#How Much Does AirBnb Cost in Hong Kong?
-
-##Building a regression model to predict the prices
+## Building a regression model to predict the prices
 
 
 # Executive Summary 

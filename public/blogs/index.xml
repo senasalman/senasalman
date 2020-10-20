@@ -42,9 +42,8 @@ The GDP data we will look at is from the United Nations’ National Accounts Mai
       <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/blogs/blog8/</guid>
-      <description>#How Much Does AirBnb Cost in Hong Kong?
-##Building a regression model to predict the prices
-Executive Summary The goal of this project is to predict the total cost for two people staying 4 nights in an AirBnB in Hong Kong. We downloaded the data from insideairbnb.com and followed the IICE method (import data, inspect data, clean data, explore data).</description>
+      <description>Building a regression model to predict the prices  Executive Summary The goal of this project is to predict the total cost for two people staying 4 nights in an AirBnB in Hong Kong. We downloaded the data from insideairbnb.com and followed the IICE method (import data, inspect data, clean data, explore data).
+Understanding the Data After importing the data, we looked at the data entries and variables in order to adapt them to our required format.</description>
     </item>
     
     <item>
