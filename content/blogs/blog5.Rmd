@@ -3,7 +3,7 @@ title: "An Analysis on London Bike Sharing"
 date: '2020-10-20'
 description: An Analysis on London Bike Sharing
 draft: no
-image: pic10.jpg
+image: pic5.jpg
 keywords: ''
 slug: blog5
 categories:

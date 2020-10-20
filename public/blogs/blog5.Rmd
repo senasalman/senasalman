@@ -3,7 +3,7 @@ title: "An Analysis on London Bike Sharing"
 date: '2020-10-20'
 description: An Analysis on London Bike Sharing
 draft: no
-image: pic10.jpg
+image: pic5.jpg
 keywords: ''
 slug: blog5
 categories:
@@ -67,7 +67,6 @@ We can easily create a facet grid that plots bikes hired by month and year.
 For May and Jun 2020 we observe that the curves are more flat compared to the previous years. This can be explained by Covid. Also it shows that bike rentals in May and June 2020 are distributed evenly between 20k and 60k, while in the previous years you always have a peak that shows that in the previous years we had for each month a certain number for daily rentals that didn't differ that much by day.
 
 The second one looks at percentage changes from the expected level of weekly rentals. The two grey shaded rectangles correspond to the second (weeks 14-26) and fourth (weeks 40-52) quarters.
-
 
 ```{r tfl_calc, echo=FALSE, out.width="100%", fig.width=10, fig.height=7}
 #Since data is on daily basis, find average by month in each year, that's actual rentals

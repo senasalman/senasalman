@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lifestyle on Portfolio website for Sena Salman</title>
+    <title>My Projects on Portfolio website for Sena Salman</title>
     <link>/blogs/</link>
-    <description>Recent content in Lifestyle on Portfolio website for Sena Salman</description>
+    <description>Recent content in My Projects on Portfolio website for Sena Salman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 31 Oct 2017 22:27:21 -0500</lastBuildDate><atom:link href="/blogs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/blogs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>An Analysis on London Bike Sharing</title>
       <link>/blogs/blog5/</link>
@@ -24,6 +24,16 @@
       <guid>/blogs/blog7/</guid>
       <description>An Emergency: Global Warming Analysing Climate Change and Temperature Anomalies If we wanted to study climate change, we can find data on the Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies in the Northern Hemisphere at NASA’s Goddard Institute for Space Studies. The tabular data of temperature anomalies can be found here
 To define temperature anomalies you need to have a reference, or base, period which NASA clearly states that it is the period between 1951-1980.</description>
+    </item>
+    
+    <item>
+      <title>GDP Components Change Over Time and Among Countries</title>
+      <link>/blogs/blog9/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/blog9/</guid>
+      <description>GDP Components Change Over Time and Among Countries Comparing Germany, Turkey, India and USA At the risk of oversimplifying things, the main components of gross domestic product, GDP are personal consumption (C), business investment (I), government spending (G) and net exports (exports - imports).
+The GDP data we will look at is from the United Nations’ National Accounts Main Aggregates Database, which contains estimates of total GDP and its components for all countries from 1970 to today.</description>
     </item>
     
     <item>

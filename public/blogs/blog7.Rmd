@@ -3,7 +3,7 @@ title: "An Emergency: Global Warming"
 date: '2020-10-20'
 description: An Emergency Global Warming
 draft: no
-image: pic10.jpg
+image: pic7.jpg
 keywords: ''
 slug: blog7
 categories:

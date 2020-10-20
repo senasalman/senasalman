@@ -48,7 +48,7 @@ disqusShortname = ""
       url = "#"
 
     [[params.navigation.links]]
-      name = "Blogs"
+      name = "My Projects"
       url = "blogs"
 
     #[[params.navigation.links]]
@@ -72,9 +72,9 @@ disqusShortname = ""
       url = "blogs/Sena_Salman_CV.pdf"
       
     # Button Style 1
-    [[params.navigation.button1]]
-      name = "My projects"
-      url = "blogs"
+    #[[params.navigation.button1]]
+    #  name = "My projects"
+    #  url = "blogs"
 
     # Button Style 2
     #[[params.navigation.button2]]
@@ -89,6 +89,7 @@ disqusShortname = ""
     title = "Personal Portfolio of Sena Salman"
     subtitle = "Welcome to my website. I am currently studying Masters in Financial Analysis at LBS"
     buttonText = "My Projects"
+    url = "blogs"
 
 
   # Tiles Section
@@ -99,37 +100,37 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "An Analysis on London Bike Sharing"
       subtitle = "Explaining excess rentals in TFL"
-      image = "pic01.jpg"
+      image = "pic5.jpg"
       url = "blogs/blog5"
 
     [[params.tiles.showcase]]
       title = "Trump's Approval Margins"
       subtitle = "How has it changed in years"
-      image = "pic02.jpg"
+      image = "pic6.jpg"
       url = "blogs/blog6"
 
     [[params.tiles.showcase]]
       title = "An Emergency: Global Warming"
       subtitle = "Analysing Climate Change and Temperature Anomalies"
-      image = "pic03.jpg"
+      image = "pic7.jpg"
       url = "blogs/blog7"
 
     [[params.tiles.showcase]]
       title = "How Much Does AirBnb Cost in Hong Kong?"
       subtitle = "Building a regression model to predict the prices"
-      image = "pic04.jpg"
+      image = "pic8.jpg"
       url = "blogs/blog8"
       
     [[params.tiles.showcase]]
       title = "GDP Components Change Over Time and Among Countries"
       subtitle = "Comparing Germany, Turkey, India and USA"
-      image = "pic04.jpg"
+      image = "pic9.jpg"
       url = "blogs/blog9"
       
           [[params.tiles.showcase]]
       title = "Yield Curve Inversion Analysis"
       subtitle = "Is really it an indicator of recession?"
-      image = "pic04.jpg"
+      image = "pic10.jpg"
       url = "blogs/blog10"
 
   # [[params.tiles.showcase]]

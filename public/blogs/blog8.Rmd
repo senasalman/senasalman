@@ -3,7 +3,7 @@ title: "How Much Does AirBnb Cost in Hong Kong?"
 date: '2020-10-20'
 description: How Much Does AirBnb Cost in Hong Kong?
 draft: no
-image: pic10.jpg
+image: pic8.jpg
 keywords: ''
 slug: blog8
 categories:
