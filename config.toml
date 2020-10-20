@@ -122,7 +122,7 @@ disqusShortname = ""
       
     [[params.tiles.showcase]]
       title = "GDP Components Change Over Time and Among Countries"
-      subtitle = "Comparing Germany, Turkey, and USA"
+      subtitle = "Comparing Germany, Turkey, India and USA"
       image = "pic04.jpg"
       url = "blogs/blog9"
       

@@ -68,7 +68,6 @@ For May and Jun 2020 we observe that the curves are more flat compared to the pr
 
 The second one looks at percentage changes from the expected level of weekly rentals. The two grey shaded rectangles correspond to the second (weeks 14-26) and fourth (weeks 40-52) quarters.
 
-
 ```{r tfl_calc, echo=FALSE, out.width="100%", fig.width=10, fig.height=7}
 #Since data is on daily basis, find average by month in each year, that's actual rentals
 bikes_m <- bike %>%
