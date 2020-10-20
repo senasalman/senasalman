@@ -40,8 +40,11 @@ library(tidyquant)
 library(infer)
 library(openintro)
 library(tidyquant)
+<<<<<<< HEAD:public/blogs/blog10.Rmd
 library(knitr)
 library(ggplot2)
+=======
+>>>>>>> f502ed6c4b9cb01bb357c15c406ea35f0a55c551:content/blogs/blog10.Rmd
 ```
 
 # Yield Curve Inversion Analysis
