@@ -1,0 +1,89 @@
+---
+title: "An Analysis on London Bike Sharing"
+date: '2020-10-20'
+description: An Analysis on London Bike Sharing
+draft: no
+image: pic10.jpg
+keywords: ''
+slug: blog5
+categories:
+- ''
+- ''
+---
+
+
+
+<div id="an-analysis-on-london-bike-sharing" class="section level1">
+<h1>An Analysis on London Bike Sharing</h1>
+<div id="explaining-excess-rentals-in-tfl" class="section level2">
+<h2>Explaining excess rentals in TFL</h2>
+<pre class="r"><code>url &lt;- &quot;https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx&quot;
+# Download TFL data to temporary file
+httr::GET(url, write_disk(bike.temp &lt;- tempfile(fileext = &quot;.xlsx&quot;)))</code></pre>
+<pre><code>## Response [https://airdrive-secure.s3-eu-west-1.amazonaws.com/london/dataset/number-bicycle-hires/2020-09-18T09%3A06%3A54/tfl-daily-cycle-hires.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJJDIMAIVZJDICKHA%2F20201020%2Feu-west-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20201020T023817Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=857f240663fa9560cf0e3fb11ade96c3d9679d94a7637ddcaebcb2a92c4c3fed&amp;X-Amz-SignedHeaders=host]
+##   Date: 2020-10-20 02:39
+##   Status: 200
+##   Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+##   Size: 165 kB
+## &lt;ON DISK&gt;  /var/folders/j5/wh9t763d73732_b5vvq80rph0000gn/T//RtmpS4KSHY/file262f3be021ce.xlsx</code></pre>
+<pre class="r"><code># Use read_excel to read it as dataframe
+bike0 &lt;- read_excel(bike.temp,
+                   sheet = &quot;Data&quot;,
+                   range = cell_cols(&quot;A:B&quot;))
+# change dates to get year, month, and week
+bike &lt;- bike0 %&gt;% 
+  clean_names() %&gt;% 
+  rename (bikes_hired = number_of_bicycle_hires) %&gt;% 
+  mutate (year = year(day),
+          month = lubridate::month(day, label = TRUE),
+          week = isoweek(day))</code></pre>
+<p>We can easily create a facet grid that plots bikes hired by month and year.</p>
+<p><img src="/Users/Sena/Desktop/R/senasalman/images/tfl_distributions_monthly.png" width="100%" style="display: block; margin: auto;" />
+For May and Jun 2020 we see that the curves are more flat compared to the previous years. This can be explained by Covid. Also it shows that bike rentals in May and June 2020 are distributed evenly between 20k and 60k, while in the previous years you always have a peak that shows that in the previous years we had for each month a certain number for daily rentals that didn’t differ that much by day.</p>
+<p><img src="/Users/Sena/Desktop/R/senasalman/images/tfl_monthly.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>The second one looks at percentage changes from the expected level of weekly rentals. The two grey shaded rectangles correspond to the second (weeks 14-26) and fourth (weeks 40-52) quarters.</p>
+<p><img src="/Users/Sena/Desktop/R/senasalman/images/tfl_weekly.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Plot the first Graph, where the blue line is the expected number of rentals in that month, and the black line is actual number of rentals. The difference is shaded red, if number of excess rentals is smaller than 0, and green otherwise.</p>
+<pre class="r"><code>bikes_monthly$month &lt;- as.factor(bikes_monthly$month)
+ggplot(data=bikes_monthly, aes(x=month , y=expected_rentals, group=1)) + facet_wrap(~year) + 
+labs(x=NULL, y=&quot;Bike Rentals\n&quot;, caption=&quot;Source: TfL, London Data Store&quot;, title=&quot;Monthly changes in TfL bike rentals&quot;, subtitle= &quot;Change from monthly average shown in blue \nand calculated between 2015-2019&quot;) + theme_minimal(base_family=&quot;Arial&quot;) +
+  theme (plot.title = element_text(size=13, face=&quot;bold&quot;), plot.subtitle = element_text(size=9))+
+  geom_ribbon(aes(ymin = expected_rentals + if_else(excess_rentals &lt; 0, excess_rentals, 0),
+                  ymax = expected_rentals), color =&quot;grey&quot;, fill = &quot;red&quot;, alpha = 0.3) +
+  geom_ribbon(aes(ymin = expected_rentals,
+                  ymax = expected_rentals + if_else(excess_rentals &gt; 0, excess_rentals, 0)),color =&quot;grey&quot;, fill = &quot;green&quot;, alpha = 0.3)+ theme(aspect.ratio=0.5) + theme(axis.text.x= element_text(size=5)) +
+  scale_x_discrete(labels=c(&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;))+ geom_line(color=&quot;blue&quot;)</code></pre>
+<p><img src="/blogs/blog5_files/figure-html/unnamed-chunk-1-1.png" width="648" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>bike_filtered_week &lt;- bike %&gt;%
+                  filter(year %in% c(2015: 2020)) %&gt;%
+                  group_by(year, week) %&gt;%
+                  summarise(avgWeek_filtered_week=mean(bikes_hired))
+#Calculate expected number of rentals each week
+bike_weekly_average &lt;- bike_filtered_week %&gt;%
+                  filter(year %in% c(2015: 2019)) %&gt;%
+                  group_by(week) %&gt;%
+                  summarise(avgWeek_weekly_average=mean(avgWeek_filtered_week)) 
+#Merge data
+bike_joined_full &lt;- left_join(bike_filtered_week, bike_weekly_average, by = &quot;week&quot;)
+#Calculate the percentage excess rental on each week of the year
+bike_joined_full_2 &lt;- bike_joined_full %&gt;%
+  mutate(above_avg = (avgWeek_filtered_week - avgWeek_weekly_average)*100/avgWeek_weekly_average) </code></pre>
+<pre class="r"><code>ggplot(bike_joined_full_2, aes(x=week, y=above_avg)) + 
+  labs(title= &quot;Weekly Changes in TFL Bike Rentals&quot;, subtitle=&quot;% changes from weekly averages \ncalculated between 2015-2019&quot;, x=&quot;week&quot;, y=NULL, caption=&quot;Source: TfL, London Data Store&quot;) +
+  geom_line(fill=&quot;black&quot;) +
+  theme_minimal() +
+  facet_wrap(~year)+ 
+  geom_ribbon(aes(ymin = above_avg - if_else(above_avg &lt; 0, above_avg, 0),
+                  ymax = above_avg), color =&quot;grey&quot;, fill = &quot;red&quot;, alpha = 0.3) +
+  geom_ribbon(aes(ymin = above_avg,
+                  ymax = above_avg - if_else(above_avg &gt; 0, above_avg, 0)),color =&quot;grey&quot;, fill = &quot;green&quot;, alpha = 0.3) + 
+   scale_x_discrete(limits = c(13, 26, 39, 53)) +
+  #Shape for quartiles of the year
+  geom_rect(xmin=13, xmax=26, ymin=-150, ymax=150, fill=&quot;grey&quot;, alpha=0.01) + 
+  geom_rect(xmin=39, xmax=52,ymin=-150, ymax=150, fill=&quot;grey&quot;, alpha=0.01) +
+  geom_rug(sides=&quot;b&quot;, aes(colour=ifelse(above_avg &gt; 0, &quot;red&quot;, &quot;green&quot;)), alpha=0.2) +
+  theme(legend.position=&#39;none&#39;) +
+  scale_y_continuous(labels = function(x) paste0(x, &quot;%&quot;))</code></pre>
+<p><img src="/blogs/blog5_files/figure-html/unnamed-chunk-3-1.png" width="1440" style="display: block; margin: auto;" /></p>
+</div>
+</div>

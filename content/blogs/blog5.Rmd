@@ -1,0 +1,149 @@
+---
+title: "An Analysis on London Bike Sharing"
+date: '2020-10-20'
+description: An Analysis on London Bike Sharing
+draft: no
+image: pic10.jpg
+keywords: ''
+slug: blog5
+categories:
+- ''
+- ''
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(here)
+library(skimr)
+library(janitor)
+library(httr)
+library(readxl)
+library(vroom)
+```
+
+
+
+# An Analysis on London Bike Sharing
+##  Explaining excess rentals in TFL
+
+```{r, get_tfl_data, cache=TRUE}
+url <- "https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx"
+# Download TFL data to temporary file
+httr::GET(url, write_disk(bike.temp <- tempfile(fileext = ".xlsx")))
+# Use read_excel to read it as dataframe
+bike0 <- read_excel(bike.temp,
+                   sheet = "Data",
+                   range = cell_cols("A:B"))
+# change dates to get year, month, and week
+bike <- bike0 %>% 
+  clean_names() %>% 
+  rename (bikes_hired = number_of_bicycle_hires) %>% 
+  mutate (year = year(day),
+          month = lubridate::month(day, label = TRUE),
+          week = isoweek(day))
+```
+
+We can easily create a facet grid that plots bikes hired by month and year.
+
+```{r tfl_month_year_grid, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("images", "tfl_distributions_monthly.png"), error = FALSE)
+```
+For May and Jun 2020 we see that the curves are more flat compared to the previous years. This can be explained by Covid. Also it shows that bike rentals in May and June 2020 are distributed evenly between 20k and 60k, while in the previous years you always have a peak that shows that in the previous years we had for each month a certain number for daily rentals that didn't differ that much by day.
+
+```{r tfl_absolute_monthly_change, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("images", "tfl_monthly.png"), error = FALSE)
+```
+
+The second one looks at percentage changes from the expected level of weekly rentals. The two grey shaded rectangles correspond to the second (weeks 14-26) and fourth (weeks 40-52) quarters.
+
+```{r tfl_percent_change, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("images", "tfl_weekly.png"), error = FALSE)
+```
+
+```{r tfl_calc, echo=FALSE, out.width="100%", fig.width=10, fig.height=7}
+#Since data is on daily basis, find average by month in each year, that's actual rentals
+bikes_m <- bike %>%
+                  filter(year %in% c(2015: 2020)) %>%
+                  group_by(year, month) %>%
+                  summarise(actual_rentals=mean(bikes_hired))
+#Find average by each month across all years- that's expected rentals
+bikes_average <- bikes_m %>%
+                  filter(year %in% c(2015: 2019)) %>%
+                  group_by(month) %>%
+                  summarise(expected_rentals=mean(actual_rentals))
+#Merge data
+bikes_m <-left_join(bikes_m,bikes_average, by="month")
+#Calculate excess rentals
+bikes_monthly <- bikes_m %>%
+  mutate(excess_rentals = actual_rentals-expected_rentals)
+# Months to numeric
+bikes_monthly$month <- as.numeric(bikes_monthly$month) 
+```
+
+Plot the first Graph, where the blue line is the expected number of rentals in that month, and the black line is actual number of rentals. The difference is shaded red, if number of excess rentals is smaller than 0, and green otherwise.
+```{r}
+bikes_monthly$month <- as.factor(bikes_monthly$month)
+ggplot(data=bikes_monthly, aes(x=month , y=expected_rentals, group=1)) + facet_wrap(~year) + 
+labs(x=NULL, y="Bike Rentals\n", caption="Source: TfL, London Data Store", title="Monthly changes in TfL bike rentals", subtitle= "Change from monthly average shown in blue \nand calculated between 2015-2019") + theme_minimal(base_family="Arial") +
+  theme (plot.title = element_text(size=13, face="bold"), plot.subtitle = element_text(size=9))+
+  geom_ribbon(aes(ymin = expected_rentals + if_else(excess_rentals < 0, excess_rentals, 0),
+                  ymax = expected_rentals), color ="grey", fill = "red", alpha = 0.3) +
+  geom_ribbon(aes(ymin = expected_rentals,
+                  ymax = expected_rentals + if_else(excess_rentals > 0, excess_rentals, 0)),color ="grey", fill = "green", alpha = 0.3)+ theme(aspect.ratio=0.5) + theme(axis.text.x= element_text(size=5)) +
+  scale_x_discrete(labels=c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"))+ geom_line(color="blue")
+```
+
+```{r}
+bike_filtered_week <- bike %>%
+                  filter(year %in% c(2015: 2020)) %>%
+                  group_by(year, week) %>%
+                  summarise(avgWeek_filtered_week=mean(bikes_hired))
+#Calculate expected number of rentals each week
+bike_weekly_average <- bike_filtered_week %>%
+                  filter(year %in% c(2015: 2019)) %>%
+                  group_by(week) %>%
+                  summarise(avgWeek_weekly_average=mean(avgWeek_filtered_week)) 
+#Merge data
+bike_joined_full <- left_join(bike_filtered_week, bike_weekly_average, by = "week")
+#Calculate the percentage excess rental on each week of the year
+bike_joined_full_2 <- bike_joined_full %>%
+  mutate(above_avg = (avgWeek_filtered_week - avgWeek_weekly_average)*100/avgWeek_weekly_average) 
+```
+
+```{r, fig.width=15, fig.height=5}
+ggplot(bike_joined_full_2, aes(x=week, y=above_avg)) + 
+  labs(title= "Weekly Changes in TFL Bike Rentals", subtitle="% changes from weekly averages \ncalculated between 2015-2019", x="week", y=NULL, caption="Source: TfL, London Data Store") +
+  geom_line(fill="black") +
+  theme_minimal() +
+  facet_wrap(~year)+ 
+  geom_ribbon(aes(ymin = above_avg - if_else(above_avg < 0, above_avg, 0),
+                  ymax = above_avg), color ="grey", fill = "red", alpha = 0.3) +
+  geom_ribbon(aes(ymin = above_avg,
+                  ymax = above_avg - if_else(above_avg > 0, above_avg, 0)),color ="grey", fill = "green", alpha = 0.3) + 
+   scale_x_discrete(limits = c(13, 26, 39, 53)) +
+  #Shape for quartiles of the year
+  geom_rect(xmin=13, xmax=26, ymin=-150, ymax=150, fill="grey", alpha=0.01) + 
+  geom_rect(xmin=39, xmax=52,ymin=-150, ymax=150, fill="grey", alpha=0.01) +
+  geom_rug(sides="b", aes(colour=ifelse(above_avg > 0, "red", "green")), alpha=0.2) +
+  theme(legend.position='none') +
+  scale_y_continuous(labels = function(x) paste0(x, "%"))
+```
