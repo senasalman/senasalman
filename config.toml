@@ -129,7 +129,7 @@ disqusShortname = ""
       
           [[params.tiles.showcase]]
       title = "Yield Curve Inversion Analysis"
-      subtitle = "Is really it an indicator of recession?"
+      subtitle = "Is it really an indicator of recession?"
       image = "pic10.jpg"
       url = "blogs/blog10"
 
