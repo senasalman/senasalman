@@ -82,11 +82,7 @@ glimpse(tidy_GDP_data)
 country_list <- c("United States","Turkey", "Germany")
 ```
 
-First, we reproduce the following graph (but exchanging Turkey for India).
-
-```{r gdp1, echo=FALSE, out.width="100%"}
-knitr::include_graphics(here::here("images", "gdp1.png"), error = FALSE)
-```
+First, we look at the following graph (but exchanging Turkey for India).
 
 ```{r plot_GDP, fig.width=10}
 plot1 <- tidy_GDP_data %>%
@@ -144,10 +140,9 @@ ggplot(comparison, aes(x= years))+
 ```
 We see that the difference seems to be quite small (<5%), but a difference exists!
 
-Now we will reproduce the following graph:
+Now we will create the following graph:
 
 ```{r gdp2, echo=FALSE, out.width="100%"}
-knitr::include_graphics(here::here("images", "gdp2.png"), error = FALSE)
 ```
 ```{r, challenge2_plot3, fig.width=15}
 plot1 <- tidy_GDP_data %>%
