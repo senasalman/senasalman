@@ -37,27 +37,27 @@ disqusShortname = ""
 
   # Navigation Section
   [params.navigation]
-    title = "Portfolio and Works"
+    title = "Sena Salman"
     #subtitle = ""
     menu = "Menu"
     # Optional logo as brand stored in img/
     # logo = "logo.png"
 
     [[params.navigation.links]]
-      name = "About me"
+      name = "Home"
       url = "#"
 
     [[params.navigation.links]]
-      name = "Work on Covid Cases"
+      name = "Blogs"
       url = "blogs"
 
-    [[params.navigation.links]]
-      name = "Work on US Elections"
-      url = "blogs/ipsum"
+    #[[params.navigation.links]]
+    # name = "Generic Blog"
+    #  url = "blogs/ipsum"
 
-    [[params.navigation.links]]
-      name = "Work on Markets"
-      url = "elements.html"
+    #[[params.navigation.links]]
+    #  name = "Elements"
+    #  url = "elements.html"
 
     # Add custom links here by uncommenting code below. To remove links just delete
     # the [[params.navigation.links]] map associated with that link. Copy and paste
@@ -68,13 +68,18 @@ disqusShortname = ""
 
     # Button Style 1
     [[params.navigation.button1]]
-      name = "Get Started"
+      name = "CV"
+      url = "blogs/Sena_Salman_CV.pdf"
+      
+    # Button Style 1
+    [[params.navigation.button1]]
+      name = "My projects"
       url = "blogs"
 
     # Button Style 2
-    [[params.navigation.button2]]
-      name = "Queries"
-      url = "#"
+    #[[params.navigation.button2]]
+    #  name = "Queries"
+    #  url = "#"
 
 
   # Banner section
@@ -82,8 +87,8 @@ disqusShortname = ""
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
     title = "Personal Portfolio of Sena Salman"
-    #subtitle = ""
-    buttonText = "About me"
+    subtitle = "Welcome to my website. I am currently studying Masters in Financial Analysis at LBS"
+    buttonText = "My Projects for Data Analytics"
 
 
   # Tiles Section
@@ -92,28 +97,40 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "About me"
-      #subtitle = "CV"
+      title = "An Analysis on London Bike Sharing"
+      subtitle = "Explaining excess rentals in TFL"
       image = "pic01.jpg"
-      url = "blogs/aliquam"
+      url = "blogs/blog5"
 
     [[params.tiles.showcase]]
-      title = "Work on Covid Cases"
-      #subtitle = "Feugiat Amet Tempus"
+      title = "Trump's Approval Margins"
+      subtitle = "How has it changed in years"
       image = "pic02.jpg"
-      url = "blogs/tempus"
+      url = "blogs/blog6"
 
     [[params.tiles.showcase]]
-      title = "Work on US Elections"
-      #subtitle = "Lorem Etiam Nullam"
+      title = "An Emergency: Global Warming"
+      subtitle = "Analysing Climate Change and Temperature Anomalies"
       image = "pic03.jpg"
-      url = "blogs/magna"
+      url = "blogs/blog7"
 
     [[params.tiles.showcase]]
-      title = "Work on Markets"
-      #subtitle = "Nisl Sed Aliquam"
+      title = "How Much Does AirBnb Cost in Hong Kong?"
+      subtitle = "Building a regression model to predict the prices"
       image = "pic04.jpg"
-      url = "blogs/ipsum"
+      url = "blogs/blog8"
+      
+    [[params.tiles.showcase]]
+      title = "GDP Components Change Over Time and Among Countries"
+      subtitle = "Comparing Germany, Turkey, and USA"
+      image = "pic04.jpg"
+      url = "blogs/blog9"
+      
+          [[params.tiles.showcase]]
+      title = "Yield Curve Inversion Analysis"
+      subtitle = "Is really it an indicator of recession?"
+      image = "pic04.jpg"
+      url = "blogs/blog10"
 
   # [[params.tiles.showcase]]
    #   title = "Consequat"
@@ -136,16 +153,16 @@ disqusShortname = ""
     # To add more blogs just copy and paste the code.
 
   # Section Type Two
-  [params.two]
-    enable = true
-    title = "Massa libero"
-    subtitle = """Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. 
-    Mauris aliquet magna magna sed nunc rhoncus pharetra. 
-    Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. 
-    Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero.
-    Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus."""
-    buttonText = "Get Started"
-    url = "blogs"
+  #[params.two]
+  #  enable = true
+  #  title = "Massa libero"
+  #  subtitle = """Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. 
+  #  Mauris aliquet magna magna sed nunc rhoncus pharetra. 
+  #  Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. 
+  #  Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero.
+  #  Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus."""
+  #  buttonText = "Get Started"
+  #  url = "blogs"
 
 
   # Contact section
@@ -185,9 +202,9 @@ disqusShortname = ""
     country = "United Kingdom"
 
   # Footer section
-  [params.footer]
-    enable = true
-    copyright = "Company Name"
+  #[params.footer]
+  #  enable = true
+  #  copyright = "Company Name"
 
     # Uses font awesome icons
    # [[params.footer.social]]
