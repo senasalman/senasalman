@@ -131,7 +131,7 @@ ggplot(comparison, aes(x= years))+
   facet_wrap(~Country)+
   scale_x_discrete(breaks = seq(1970, 2017, by = 10))+
   scale_y_continuous(labels = scales::percent)+
-  labs(title = "Less difference occures over the years...",
+  labs(title = "Less difference occurs over the years...",
        subtitle = "Difference between GDP from sum and GDP from data",
        x="",
        y="Difference of GDP in %")+
